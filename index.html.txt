@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Xavier ♡ Fati</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #090909;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* ---------- FONDO ---------- */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(130, 20, 60, .20), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(70, 20, 80, .20), transparent 30%);
+    pointer-events: none;
+    z-index: -2;
+}
+
+/* ---------- PANTALLA INICIAL ---------- */
+
+#intro {
+    position: fixed;
+    inset: 0;
+    background: #080808;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 9999;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.intro-content {
+    padding: 30px;
+}
+
+.intro-small {
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+.intro-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(45px, 10vw, 90px);
+    margin-bottom: 25px;
+}
+
+.intro-title span {
+    color: #d94c78;
+}
+
+.open-button {
+    border: 1px solid #d94c78;
+    background: transparent;
+    color: white;
+    padding: 14px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.open-button:hover {
+    background: #d94c78;
+    transform: scale(1.05);
+}
+
+/* ---------- GENERAL ---------- */
+
+section {
+    min-height: 100vh;
+    padding: 90px 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 7vw, 70px);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #aaa;
+    max-width: 650px;
+    margin: 0 auto 50px;
+    line-height: 1.8;
+}
+
+/* ---------- HERO ---------- */
+
+.hero {
+    text-align: center;
+    background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.8)),
+        url("fotos/foto1.jpg") center/cover;
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: auto;
+}
+
+.hero-small {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 12px;
+    color: #ddd;
+}
+
+.hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(65px, 13vw, 150px);
+    line-height: .9;
+    margin: 20px 0;
+}
+
+.hero h1 span {
+    color: #d94c78;
+}
+
+.hero-text {
+    color: #ddd;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* ---------- CONTADOR ---------- */
+
+.counter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 45px;
+}
+
+.time-box {
+    min-width: 95px;
+    padding: 20px 15px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.time-number {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.time-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #aaa;
+}
+
+/* ---------- FOTOS ---------- */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    width: 100%;
+    margin: auto;
+}
+
+.gallery img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    filter: grayscale(15%);
+    transition: .4s;
+}
+
+.gallery img:hover {
+    transform: scale(1.03);
+    filter: grayscale(0%);
+}
+
+/* ---------- CARTA ---------- */
+
+.letter {
+    max-width: 750px;
+    margin: auto;
+    padding: 45px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 20px;
+    line-height: 2;
+    color: #ddd;
+}
+
+.letter p {
+    margin-bottom: 20px;
+}
+
+.signature {
+    color: #d94c78;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+}
+
+/* ---------- PLAYLIST ---------- */
+
+.music-card {
+    max-width: 700px;
+    width: 100%;
+    margin: auto;
+    padding: 40px;
+    text-align: center;
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(150,30,70,.2), rgba(255,255,255,.03));
+    border: 1px solid rgba(255,255,255,.1);
+}
+
+.music-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.spotify-button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 30px;
+    background: #1db954;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: .3s;
+}
+
+.spotify-button:hover {
+    transform: scale(1.05);
+}
+
+/* ---------- MENSAJES ---------- */
+
+.message-box {
+    max-width: 650px;
+    min-height: 200px;
+    margin: auto;
+    padding: 45px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#message {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    line-height: 1.5;
+}
+
+.message-button {
+    display: block;
+    margin: 25px auto 0;
+    padding: 13px 28px;
+    border-radius: 30px;
+    background: #d94c78;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* ---------- DISTANCIA ---------- */
+
+.distance {
+    text-align: center;
+}
+
+.countries {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 60px 0;
+}
+
+.country {
+    font-size: 60px;
+}
+
+.line {
+    width: 180px;
+    height: 1px;
+    background: #d94c78;
+    position: relative;
+}
+
+.line::after {
+    content: "♡";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #090909;
+    padding: 10px;
+    color: #d94c78;
+}
+
+/* ---------- CUANDO NOS VEAMOS ---------- */
+
+.future-list {
+    max-width: 700px;
+    margin: auto;
+    width: 100%;
+}
+
+.future-item {
+    padding: 20px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 12px;
+    background: rgba(255,255,255,.03);
+    transition: .3s;
+}
+
+.future-item:hover {
+    border-color: #d94c78;
+    transform: translateX(5px);
+}
+
+.future-item span {
+    color: #d94c78;
+    margin-right: 10px;
+}
+
+/* ---------- FINAL ---------- */
+
+.final {
+    text-align: center;
+    min-height: 70vh;
+}
+
+.final h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(45px, 8vw, 90px);
+}
+
+.final p {
+    max-width: 600px;
+    margin: 25px auto;
+    color: #aaa;
+    line-height: 1.8;
+}
+
+.heart {
+    color: #d94c78;
+    font-size: 45px;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media(max-width: 600px) {
+
+    section {
+        padding: 70px 6%;
+    }
+
+    .time-box {
+        min-width: 75px;
+        padding: 15px 10px;
+    }
+
+    .time-number {
+        font-size: 22px;
+    }
+
+    .letter {
+        padding: 25px;
+    }
+
+    .music-card {
+        padding: 30px 20px;
+    }
+
+    .country {
+        font-size: 45px;
+    }
+
+    .line {
+        width: 100px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+
+<div id="intro">
+
+    <div class="intro-content">
+
+        <div class="intro-small">
+            tengo algo para ti
+        </div>
+
+        <div class="intro-title">
+            Xavier <span>♡</span> Fati
+        </div>
+
+        <button class="open-button" onclick="openPage()">
+            abrir nuestro pequeño rincón
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            desde el 24 de mayo de 2026
+        </div>
+
+        <h1>
+            Nosotros<br>
+            <span>♡</span>
+        </h1>
+
+        <p class="hero-text">
+            Dos personas, dos países y un mismo amor.
+            <br>
+            Y esta es solamente una pequeña parte de nuestra historia.
+        </p>
+
+        <div class="counter">
+
+            <div class="time-box">
+                <div class="time-number" id="days">0</div>
+                <div class="time-label">días</div>
+            </div>
+
+            <div class="time-box">
+                <div class="time-number" id="hours">0</div>
+                <div class="time-label">horas</div>
+            </div>
+
+            <div class="time-box">
+                <div class="time-number" id="minutes">0</div>
+                <div class="time-label">minutos</div>
+            </div>
+
+            <div class="time-box">
+                <div class="time-number" id="seconds">0</div>
+                <div class="time-label">segundos</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOTOS -->
+
+<section>
+
+    <h2 class="section-title">
+        nuestros momentos
+    </h2>
+
+    <p class="section-subtitle">
+        Aunque muchos de nuestros recuerdos hayan ocurrido
+        detrás de una pantalla, siguen siendo recuerdos que
+        guardo con muchísimo cariño.
+    </p>
+
+    <div class="gallery">
+
+        <img src="fotos/foto1.jpg" alt="Nuestro recuerdo">
+        <img src="fotos/foto2.jpg" alt="Nuestro recuerdo">
+        <img src="fotos/foto3.jpg" alt="Nuestro recuerdo">
+        <img src="fotos/foto4.jpg" alt="Nuestro recuerdo">
+        <img src="fotos/foto5.jpg" alt="Nuestro recuerdo">
+
+    </div>
+
+</section>
+
+
+<!-- CARTA -->
+
+<section>
+
+    <h2 class="section-title">
+        para ti
+    </h2>
+
+    <div class="letter">
+
+        <p>
+            amor mío, estos 4 meses han sido de los mejores
+            de toda mi vida.
+        </p>
+
+        <p>
+            Créeme que cada momento a tu lado es de los que
+            más amo y que disfruto día a día.
+        </p>
+
+        <p>
+            La música es una de tantas cosas que me recuerdan
+            a ti, así que hice esta pequeña playlist con canciones
+            que me hacen pensar en ti y en todo lo bonito que
+            hemos vivido juntos.
+        </p>
+
+        <p>
+            Puede que ahora nos separen muchos kilómetros,
+            pero eso nunca ha impedido que te sienta cerca.
+        </p>
+
+        <p>
+            Gracias por estos cuatro meses, por cada conversación,
+            cada llamada, cada risa y cada momento que hemos
+            compartido.
+        </p>
+
+        <div class="signature">
+            te amo, Fati. ♡
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MUSICA -->
+
+<section>
+
+    <h2 class="section-title">
+        nuestra música
+    </h2>
+
+    <p class="section-subtitle">
+        Hay canciones que simplemente suenan diferente
+        cuando tienen tu nombre en nuestros recuerdos.
+    </p>
+
+    <div class="music-card">
+
+        <div class="music-icon">
+            🎧
+        </div>
+
+        <h2>
+            4 meses queriéndote desde lejos ♡
+        </h2>
+
+        <p style="margin-top:15px;color:#aaa;">
+            Una playlist hecha especialmente para ti.
+        </p>
+
+        <!-- CAMBIA ESTE ENLACE POR TU PLAYLIST -->
+
+        <a
+            class="spotify-button"
+            href="https://open.spotify.com/playlist/6M7oAcZtTmrMwRvrO1A4RR?si=bf7362dff9ec4bb2"
+            target="_blank"
+        >
+            ♫ escuchar en Spotify
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- MENSAJES -->
+
+<section>
+
+    <h2 class="section-title">
+        un mensajito para ti
+    </h2>
+
+    <p class="section-subtitle">
+        Cada vez que necesites un poquito de amor,
+        puedes tocar el botón.
+    </p>
+
+    <div class="message-box">
+
+        <div id="message">
+            toca el botón de abajo ♡
+        </div>
+
+    </div>
+
+    <button
+        class="message-button"
+        onclick="newMessage()"
+    >
+        💌 dime algo
+    </button>
+
+</section>
+
+
+<!-- DISTANCIA -->
+
+<section class="distance">
+
+    <h2 class="section-title">
+        aunque estemos lejos
+    </h2>
+
+    <p class="section-subtitle">
+        La distancia solamente es una parte de nuestra historia,
+        no el final de ella.
+    </p>
+
+    <div class="countries">
+
+        <div>
+            <div class="country">🇪🇨</div>
+            <p>Quito</p>
+        </div>
+
+        <div class="line"></div>
+
+        <div>
+            <div class="country">🇲🇽</div>
+            <p>México</p>
+        </div>
+
+    </div>
+
+    <h3 style="font-family:'Cormorant Garamond';font-size:30px;">
+        "Nos separan kilómetros,
+        pero nunca consigues sentirte lejos de mí."
+    </h3>
+
+</section>
+
+
+<!-- CUANDO NOS VEAMOS -->
+
+<section>
+
+    <h2 class="section-title">
+        cuando nos veamos...
+    </h2>
+
+    <p class="section-subtitle">
+        Cosas que quiero hacer contigo cuando por fin
+        podamos estar juntos.
+    </p>
+
+    <div class="future-list">
+
+        <div class="future-item">
+            <span>♡</span>
+            Darte el abrazo que te debo.
+        </div>
+
+        <div class="future-item">
+            <span>♡</span>
+            Verte a los ojos por primera vez.
+        </div>
+
+        <div class="future-item">
+            <span>♡</span>
+            Salir a caminar juntos.
+        </div>
+
+        <div class="future-item">
+            <span>♡</span>
+            Comer algo juntos.
+        </div>
+
+        <div class="future-item">
+            <span>♡</span>
+            Tomarnos muchísimas fotos.
+        </div>
+
+        <div class="future-item">
+            <span>♡</span>
+            Escuchar nuestra playlist juntos.
+        </div>
+
+        <div class="future-item">
+            <span>♡</span>
+            Quedarnos abrazados sin importar la hora.
+        </div>
+
+        <div class="future-item">
+            <span>♡</span>
+            Crear recuerdos que esta vez no sean solamente
+            a través de una pantalla.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FINAL -->
+
+<section class="final">
+
+    <h2>
+        todavía nos falta<br>
+        muchísimo por vivir.
+    </h2>
+
+    <p>
+        Hoy celebramos 4 meses, pero espero que algún día
+        podamos mirar esta página juntos y recordar que todo
+        comenzó con dos personas que decidieron quererse
+        aunque existieran kilómetros entre ellas.
+    </p>
+
+    <div class="heart">
+        ♡
+    </div>
+
+    <p>
+        24 · 05 · 2026
+    </p>
+
+</section>
+
+
+<script>
+
+/* ---------- ABRIR PÁGINA ---------- */
+
+function openPage() {
+
+    const intro = document.getElementById("intro");
+
+    intro.style.opacity = "0";
+    intro.style.visibility = "hidden";
+
+}
+
+
+/* ---------- CONTADOR ---------- */
+
+const startDate = new Date("2026-05-24T00:00:00");
+
+function updateCounter() {
+
+    const now = new Date();
+
+    const difference = now - startDate;
+
+    const seconds = Math.floor(difference / 1000);
+
+    const days = Math.floor(seconds / 86400);
+
+    const hours = Math.floor(
+        (seconds % 86400) / 3600
+    );
+
+    const minutes = Math.floor(
+        (seconds % 3600) / 60
+    );
+
+    const remainingSeconds = seconds % 60;
+
+    document.getElementById("days").textContent = days;
+
+    document.getElementById("hours").textContent =
+        hours;
+
+    document.getElementById("minutes").textContent =
+        minutes;
+
+    document.getElementById("seconds").textContent =
+        remainingSeconds;
+
+}
+
+updateCounter();
+
+setInterval(updateCounter, 1000);
+
+
+/* ---------- MENSAJES ---------- */
+
+const messages = [
+
+    "Te elegiría otra vez, incluso sabiendo todos los kilómetros que nos separan. ❤️",
+
+    "Gracias por convertir días normales en recuerdos que quiero guardar para siempre.",
+
+    "Si pudiera aparecer donde estás ahora mismo, lo primero que haría sería abrazarte.",
+
+    "No sabes cuánto amo encontrar una canción y pensar inmediatamente en ti.",
+
+    "Estos 4 meses son solamente el comienzo de todo lo que quiero vivir contigo.",
+
+    "Puede que estés lejos, pero sigues siendo una de las personas más presentes en mi vida.",
+
+    "Espero que algún día podamos escuchar nuestra playlist juntos, pero esta vez estando uno al lado del otro.",
+
+    "Te amo incluso en esos días en los que solamente puedo tenerte detrás de una pantalla.",
+
+    "Gracias por ser tú, por quererme y por compartir tu tiempo conmigo.",
+
+    "Mi parte favorita de estos meses es saber que todavía nos queda muchísimo por vivir.",
+
+    "Si algún día dudas de cuánto te quiero, vuelve a esta página.",
+
+    "Fati, eres mi persona favorita para hablar de cualquier tontería.",
+
+    "Quiero conocer cada versión de ti que todavía me falta conocer.",
+
+    "No necesito que todos los días sean perfectos, solamente quiero seguir compartiéndolos contigo.",
+
+    "Te extraño, te quiero y espero con muchas ganas el día en que pueda decirte todo esto mientras te abrazo."
+
+];
+
+let lastMessage = -1;
+
+function newMessage() {
+
+    let random;
+
+    do {
+
+        random = Math.floor(
+            Math.random() * messages.length
+        );
+
+    } while (
+        random === lastMessage &&
+        messages.length > 1
+    );
+
+    lastMessage = random;
+
+    document.getElementById("message").style.opacity = "0";
+
+    setTimeout(() => {
+
+        document.getElementById("message").textContent =
+            messages[random];
+
+        document.getElementById("message").style.opacity = "1";
+
+    }, 200);
+
+}
+
+</script>
+
+</body>
+</html>
